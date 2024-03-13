@@ -1,0 +1,21 @@
+//2485. Find the Pivot Integer
+class Solution {
+    public int pivotInteger(int n) {
+        int start=1;
+        int end =n;
+        int fullsum = n*(n+1)/2;
+         while(start<=end){
+             int mid= start+(end-start)/2;
+             int fir = mid*(mid+1)/2;
+             int sec = fullsum-fir+mid;
+             if(fir == sec ) return mid;
+             else if(fir<sec)
+             start=mid+1;
+             else
+             end=mid-1;
+         }
+      
+       return -1;
+        
+    }
+}
