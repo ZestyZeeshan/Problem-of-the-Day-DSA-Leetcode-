@@ -1,0 +1,23 @@
+class Solution {
+    public int longestPalindrome(String s) {
+        //initialise to keep track of character with odd frequesn
+        HashSet<Character> charSet = new HashSet<>();
+        //Initialise the length pf longest
+        int length =0;
+
+        for( char c : s.toCharArray()){
+            //if present already remove and add 2 in length
+            if(charSet.contains(c)){
+                charSet.remove(c);
+                length +=2;
+            }else{
+                charSet.add(c);
+            }
+        }
+        //if there are any char lest in set , add  1 to length for mid
+        if(!charSet.isEmpty()){
+            length += 1;
+        }
+        return length;
+    }
+}
