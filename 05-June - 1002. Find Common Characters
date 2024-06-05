@@ -1,0 +1,28 @@
+class Solution {
+    public List<String> commonChars(String[] words) {
+        int finalfreq[] = new int[26];
+        Arrays.fill(finalfreq,Integer.MAX_VALUE);
+         
+         //traversing the whole words 
+        for(String word : words){
+            int currentfreq[] = new int[26];
+            for(char c : word.toCharArray()){
+                currentfreq[c-'a']++;
+
+            }
+            //currentfreq and finalfreq ka minimum hi rkhenge
+            for(int i =0;i<26;i++){
+                finalfreq[i] = Math.min(currentfreq[i],finalfreq[i]);
+            }
+        }
+        List<String> ans = new ArrayList<>();
+        for(int i = 0;i<26;i++){
+            while(finalfreq[i]>0){
+               // char i + a  i is ascii value and a jo freq and ascii ko char me convert kr ahai
+                ans.add(String.valueOf((char)(i+'a')));
+                finalfreq[i]--;
+            }
+        }
+        return ans;
+    }
+}
