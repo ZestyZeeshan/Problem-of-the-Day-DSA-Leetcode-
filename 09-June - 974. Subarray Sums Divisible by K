@@ -1,0 +1,45 @@
+class Solution {
+    public int subarraysDivByK(int[] nums, int k) {
+       //Brute Force 
+       //Iterate through all and count all possible ways
+//          int count=0;
+//         for(int i =0;i<nums.length;i++){
+//             int sum =0;
+           
+//             for(int j=i;j<nums.length;j++){
+//                  sum += nums[j];
+//                  if(sum%k==0){
+//                 count++;
+//             }
+//             }
+           
+//         }
+//         return count;
+
+//Prefix sum using HshMap
+            int count =0;
+            int prefixsum=0;
+            HashMap <Integer,Integer> mp = new HashMap<>();
+            mp.put(0, 1); //handle subarray that start from beging
+
+            for(int num : nums){
+                //update prefix sum
+                prefixsum += num;
+         
+
+            int mod = prefixsum % k;
+
+            if(mod <0){
+                mod += k;
+            }
+//If this remainder has been seen before, it means there are subarrays ending here that are divisible by k
+            if(mp.containsKey(mod)){
+                count += mp.get(mod);
+                mp.put(mod, mp.get(mod)+1);
+            }else{
+                mp.put(mod,1);
+            }
+    }
+        return count;
+    }
+}
