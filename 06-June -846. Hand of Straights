@@ -11,6 +11,7 @@
     //     // else return false;
     //     if(n % groupSize >= groupSize) return true;
     //     return ans == groupSize;
+//
 
     public class Solution {
     public boolean isNStraightHand(int[] hand, int groupSize) {
