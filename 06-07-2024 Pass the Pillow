@@ -1,0 +1,14 @@
+class Solution {
+    public int passThePillow(int n, int time) {
+        int ans =0;
+        int completed = time / (n-1);
+        int remain = time % (n-1);
+        
+        if(completed % 2 != 0){
+            ans = n-remain;
+        }else{
+            ans = remain +1;
+        }
+        return ans;
+    }
+}
