@@ -1,0 +1,22 @@
+class Solution {
+    public String kthDistinct(String[] arr, int k) {
+        //to store the string and frequency
+        Map<String,Integer>st=new HashMap<>();
+        for(String str : arr){
+            //iterate so that if it is present increase it by 1 else put it in hashmap
+            st.put(str,st.getOrDefault(str,0)+1);
+        }
+        for(String str : arr){
+            //if frequency is distinct the decrement the k
+            if(st.get(str)==1){
+                k--;
+                //if k reaches the 0 then this is the result
+                if(k==0){
+                    return str;
+                }
+            }
+        }
+       return "";
+       
+    }
+}
