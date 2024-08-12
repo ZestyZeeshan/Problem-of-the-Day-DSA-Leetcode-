@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap<Character,Character> sToTMap = new HashMap<>();
+        HashMap<Character,Character> tToSMap = new HashMap<>();
+
+       
+        for(int i=0;i<s.length();i++){
+             char st = s.charAt(i);
+             char ts = t.charAt(i);
+            
+            //agar st k character present nhi hai to put it and map it with ts
+            if(!sToTMap.containsKey(st)){
+                sToTMap.put(st,ts);
+            }
+            //agar ts k character present nhi hai to put it and map it with st
+             if(!tToSMap.containsKey(ts)){
+                tToSMap.put(ts,st);
+            }
+            //agar st ka map ts se nhi hai ya ts ka map st se mhi hai to false return kardo
+            if(sToTMap.get(st)!=ts || tToSMap.get(ts)!=st){
+                return false;
+            }
+           
+        }
+         return true;
+    }
+}
