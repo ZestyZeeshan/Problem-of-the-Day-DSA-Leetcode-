@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class HelloWorld {
+    public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       //size of the array
+       int size = scanner.nextInt();
+       
+       //arr of the above size
+       int[] arr = new int[size];
+       
+       //insert the elemnts in the aray
+       for(int i=0;i<size;i++){
+           arr[i]=scanner.nextInt();
+       }
+       //target of the subarray
+       int target = scanner.nextInt();
+       
+       //list where we store our subarray
+       List<List<Integer>>subarrays =  FindSub(arr,target);
+       
+       if(subarrays.isEmpty()){
+           System.out.println("");
+       }else{
+           System.out.print("here is the ans");
+           for(List<Integer>subarray:subarrays){
+                System.out.print(subarray);
+           }
+       }
+    }
+       public static List<List<Integer>>FindSub(int[] arr, int target){
+           List<List<Integer>> result = new ArrayList<>();
+           int n = arr.length;
+           for(int i=0;i<n;i++){
+               int sum =0;
+               List<Integer> CurrentSum = new ArrayList<>();
+               for(int j=i;j<n;j++){
+                   sum += arr[j];
+                   CurrentSum.add(arr[j]);
+                   
+                   if(sum == target){
+                       result.add(new ArrayList<>(CurrentSum));
+                   }
+               }
+           }
+           return result;
+       
+    }
+}
