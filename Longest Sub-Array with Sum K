@@ -1,0 +1,39 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+
+
+//Longest Sub-Array with Sum K
+
+
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        //int[] arr = {-1,2,3};
+        Scanner scanner = new Scanner (System.in);
+        //soze of the array
+        int size = scanner.nextInt();
+        //array of the above size
+        int[] arr = new int[size];
+        //insert the elemt
+        for(int i=0;i<size;i++){
+            arr[i]=scanner.nextInt();
+        }
+        int target= scanner.nextInt();
+        //int target = 6;
+        int mlen = msun(arr,target);
+        System.out.println(mlen);
+    }
+    public static int msun(int[] arr , int target){
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            int s =0;
+            for(int j=i;j<arr.length;j++){
+                s += arr[j];
+                if(target==s)
+                sum = Math.max(sum,j-i+1);
+            }
+        }
+        return sum;
+    }
+}
