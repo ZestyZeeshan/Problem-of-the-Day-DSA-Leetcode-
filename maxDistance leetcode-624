@@ -1,0 +1,27 @@
+import java.util.*;
+
+class Solution {
+    public int maxDistance(List<List<Integer>> arrays) {
+       int maxDistance=0;
+       //pehle index se min N max value lekr store krlnge
+       int minV = arrays.get(0).get(0);
+       int maxV = arrays.get(0).get(arrays.get(0).size()-1);
+       
+       //iterate it from the 1 elemnt and currentmin and max lelenge
+       for(int i=1;i<arrays.size();i++){
+        List<Integer> currentarr = arrays.get(i);
+        int currentmin = currentarr.get(0);
+        int currentmax = currentarr.get(currentarr.size()-1);
+        
+
+        //dono possibility lekr ckeck krlenge and maxdistance ko update krdenge
+        maxDistance=Math.max(maxDistance,Math.abs(currentmax-minV));
+        maxDistance=Math.max(maxDistance,Math.abs(maxV-currentmin));
+        
+        //minV and MaxV ko update krdenge for the next iteration
+        minV=Math.min(currentmin,minV);
+        maxV=Math.max(currentmax,maxV);
+       }
+       return maxDistance;
+    }
+}
