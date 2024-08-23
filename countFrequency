@@ -1,0 +1,25 @@
+import java.util.*;
+class CountFreq{
+    public static Map<Integer,Integer>count(int[] arr){
+        int n = arr.length;
+        HashMap<Integer,Integer> mp = new HashMap<>();
+        for(int ele : arr){
+            if(mp.containsKey(ele)){
+                mp.put(ele,mp.get(ele)+1);
+            }else{
+                mp.put(ele,1);
+            }
+            
+        }
+         return mp;
+    }
+    public static void main(String[] args){
+        int[] arr = {1,2,3,1,4,2,5,5,2};
+         Map<Integer, Integer> freqMap = count(arr);
+        
+       for (int key : freqMap.keySet()) {
+    System.out.println("Number " + key + " appears " + freqMap.get(key) + " times.");
+}
+        
+    }
+}
