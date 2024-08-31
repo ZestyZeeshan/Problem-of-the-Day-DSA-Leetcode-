@@ -36,7 +36,15 @@ class HelloWorld {
     }
 
      public static void main(String[] args) {
-        int[] input1 = {4, 5, 2, 25};
+       // int[] input1 = {4, 5, 2, 25};
+       Scanner sc = new Scanner(System.in);
+       System.out.println("size");
+       int size = sc.nextInt();
+       int [] input1=new int[size];
+        System.out.println("element");
+       for(int i=0;i<size;i++){
+           input1[i]=sc.nextInt();
+       }
         int[] output1 = nextGreaterElement(input1);
         System.out.print("Output 1: ");
         for (int value : output1) {
