@@ -1,0 +1,27 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class HelloWorld {
+    public static int nums(int[] arr,int num,int diff){
+        int n = arr.length;
+        int count=0;
+        for(int i=0;i<n;i++){
+            if(Math.abs(arr[i]-num)<=diff){
+                count++;
+            }
+        }
+         if (count == 0) {
+            return -1;
+        }
+            return count;
+        
+        
+    }
+    public static void main(String[] args) {
+        int[] arr = {2,3,4,56,77,3};
+        int num =13;
+        int diff =2;
+        int ans = nums(arr,num,diff);
+        System.out.println(ans);
+    }
+}
