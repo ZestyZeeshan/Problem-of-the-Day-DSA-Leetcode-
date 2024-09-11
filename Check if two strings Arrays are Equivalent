@@ -1,0 +1,25 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public static boolean summ(String[] st, String[] ts){
+        StringBuilder st1 = new StringBuilder();
+        StringBuilder st2 = new StringBuilder();
+        
+        for(String s : st){
+            st1.append(s);
+        }
+        for(String t: ts){
+            st2.append(t);
+        }
+        return st1.toString().equals(st2.toString());
+    }
+    public static void main(String[] args) {
+        String[] st = {"ab","c"};
+        String[] ts = {"a","bc"};
+        // String[] st = {"ab", "c"};
+        // String[] ts = {"a", "bc"};
+        boolean ans = summ(st,ts);
+        System.out.println(ans);
+    }
+}
