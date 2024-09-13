@@ -1,0 +1,41 @@
+class Solution {
+    public int minEatingSpeed(int[] piles, int H) {
+        // Initialize the binary search range for speed (s: 1 to e: max pile size)
+        int s = 1;
+        int e = Integer.MIN_VALUE;
+        
+        // Find the maximum pile size to set the upper bound for the search
+        for (int pile : piles) {
+            e = Math.max(e, pile);
+        }
+        
+        // Binary search to find the minimum eating speed
+        while (s < e) {
+            int m = s + (e - s) / 2;
+            
+            // If the current speed `m` is sufficient, reduce the upper bound
+            if (canEatAll(piles, H, m)) {
+                e = m;
+            } else {
+                s = m + 1;
+            }
+        }
+        
+        // Return the minimum speed
+        return s;
+    }
+    
+    // Helper function to check if Koko can eat all bananas within H hours at speed `m`
+    private boolean canEatAll(int[] piles, int H, int speed) {
+        int totalHours = 0;
+        
+        // Calculate the total hours needed to eat all piles at the given speed
+        for (int pile : piles) {
+            // This is a shorthand for Math.ceil(pile / speed)
+            totalHours += (pile + speed - 1) / speed;
+        }
+        
+        // Check if the total hours are within the allowed H hours
+        return totalHours <= H;
+    }
+}
