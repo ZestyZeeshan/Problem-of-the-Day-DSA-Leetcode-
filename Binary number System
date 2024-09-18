@@ -1,0 +1,29 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+   // static final int MOD = 100000007;
+    public static int cake(String str){
+       int n = str.length();
+       if(str == null || n ==0) return -1;
+       int result = str.charAt(0)-'0';
+       for(int i=1;i<n;i+=2){
+           char operation =str.charAt(i);
+           int next=str.charAt(i+1)-'0';
+           
+           if(operation=='A'){
+               result=result & next;
+           }else if(operation=='B'){
+               result = result | next;
+           }else if(operation=='C'){
+               result = result ^ next;
+           }
+       }
+       return result;
+    }
+    public static void main(String[] args) {
+        String str="1C0C1C1A0B1";
+        int ans=cake(str);
+        System.out.println(ans);
+    }
+}
