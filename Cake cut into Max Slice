@@ -1,0 +1,16 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    static final int MOD = 100000007;
+    public static long cake(int N){
+       
+        long result = (long)N*(N+1)/2 %MOD;
+        return (result+1)%MOD;
+    }
+    public static void main(String[] args) {
+        int N=3;
+        long ans=cake(N);
+        System.out.println(ans);
+    }
+}
