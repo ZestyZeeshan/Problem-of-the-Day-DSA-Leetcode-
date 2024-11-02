@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isCircularSentence(String sentence) {
+
+        //0(1) complexity
+        char[] sc = sentence.toCharArray();
+        if(sc[0] != sc[sc.length-1]){
+            return false;
+        }
+        for(int i=1;i<sc.length-1;i++){
+            if(sc[i]==' '){
+                if(sc[i-1]!=sc[i+1]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
