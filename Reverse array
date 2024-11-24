@@ -1,0 +1,22 @@
+class Main {
+    public static void print(int[] aux){
+        for(int i=0;i<aux.length;i++){
+            System.out.print(aux[i]+" ");
+        }
+    }
+    public static void reverse(int arr[]){
+        int [] aux = new int[arr.length];
+        for(int i = arr.length-1;i>=0;i--){
+            aux[arr.length-i-1]=arr[i];
+             
+        }
+        //return aux;
+        print(aux);
+      
+    }
+    public static void main(String[] args) {
+        int arr[] ={1,3,5,7,8};
+        reverse(arr);
+      //  System.out.println(ans);
+    }
+}
