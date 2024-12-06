@@ -1,0 +1,27 @@
+class Solution {
+    public int maxCount(int[] banned, int n, int maxSum) {
+       int[] ans = new int[n + 1]; // Adjusted size to accommodate 1-based index
+        boolean[] isBanned = new boolean[n + 1];
+        
+        // Mark banned numbers
+        for (int ban : banned) {
+            if (ban <= n) {
+                isBanned[ban] = true;
+            }
+        }
+
+        int sum = 0;
+        int count = 0;
+
+        // Add numbers to ans if not banned and within maxSum
+        for (int i = 1; i <= n; i++) {
+            if (!isBanned[i]) {
+                sum += i;
+                if (sum > maxSum) break;
+                ans[count++] = i; // Save the added number
+            }
+        }
+
+        return count; // Return count of valid numbers added
+    }
+}
