@@ -1,0 +1,36 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+       if(head.next == null){
+        return true;
+       }
+       ListNode slow = head;
+       ListNode fast = head;
+       while(fast != null && fast.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+
+       }
+       ListNode reverse = rev(slow);
+       while(reverse != null){
+        if(reverse.val != head.val){
+            return false;
+        }
+        head = head.next;
+        reverse = reverse.next;
+       }
+       return true;
+    }
+    private ListNode rev(ListNode head){
+        ListNode prev =null;
+        ListNode cur = head;
+        ListNode net;
+
+        while(cur != null){
+            net =cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = net;
+        }
+        return prev;
+    }
+}
