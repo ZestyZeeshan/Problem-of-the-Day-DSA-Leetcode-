@@ -1,0 +1,41 @@
+class Solution {
+    public int waysToSplitArray(int[] nums) {
+        int valid = 0;
+        long sum = 0; // Use long to avoid overflow for large inputs.
+        for (int num : nums) {
+            sum += num;
+        }
+        long curr = 0;
+        for (int i = 0; i < nums.length - 1; i++) { // Only iterate till nums.length - 1
+            curr += nums[i];
+            long remain = sum - curr;
+            if (curr >= remain) { // Correct comparison logic
+                valid += 1;
+            }
+        }
+        return valid;
+    }
+}
+
+
+
+// class Solution {
+//     public int waysToSplitArray(int[] nums) {
+//         int valid =0;
+//         int sum=0;
+//         for(int i=0;i<nums.length;i++){
+//             sum += nums[i];
+//         }
+//         for(int i=0;i<nums.length-1;i++){
+//             int curr = nums[0];
+//             for(int j=i+1;j<nums.length;j++){
+//                 curr += nums[j];
+//                int remain =sum-curr;
+//                if(curr <= remain){
+//                 valid += 1;
+//                }
+//             }
+//         }
+//         return valid;
+//     }
+// }
