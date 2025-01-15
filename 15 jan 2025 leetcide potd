@@ -1,0 +1,27 @@
+class Solution {
+    public int minimizeXor(int num1, int num2) {
+        //find setbit 
+        int setBit = Integer.bitCount(num2);  
+        // same can be done manually setBit = n & n-1
+        int bit= 31;
+        int res =0;
+        while(bit >=0 && setBit > 0){
+            if((num1 & (1 << bit))!=0){
+                res = res | (1 << bit);//we do or operation
+                setBit--;
+            }
+            bit --;
+        }
+        bit =0;
+            while(setBit >0 && bit <= 32){
+            if((num1 & (1 << bit))==0){
+                res = res | (1 << bit);//we do or operation
+                setBit --;
+            }
+            bit ++;
+        }
+        return res;
+    
+    
+}
+}
