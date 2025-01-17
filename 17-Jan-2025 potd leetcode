@@ -1,0 +1,23 @@
+class Solution {
+    public boolean doesValidArrayExist(int[] derived) {
+        int bit = 0; // Initialize a bit variable to keep track of the parity (0 or 1)
+        
+        // Iterate through the derived array
+        for(int i = 1; i < derived.length; i++) {
+            // Check the previous element in the array
+            // If the previous element is 1, toggle the bit value
+            if (derived[i - 1] == 1) {
+                bit = (bit + 1) % 2; // Toggle between 0 and 1
+            }
+        }
+        
+        // Check the final condition based on the last element and the bit value
+        // If the last element is 0 and bit is not 0, or if the last element is 1 and bit is not 1, return false
+        if ((derived[derived.length - 1] == 0 && bit != 0) || 
+            (derived[derived.length - 1] == 1 && bit != 1)) {
+            return false;
+        }
+        
+        return true; // Return true if the conditions are satisfied
+    }
+}
