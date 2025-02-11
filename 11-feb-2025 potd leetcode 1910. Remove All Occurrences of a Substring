@@ -1,0 +1,19 @@
+class Solution {
+    public String removeOccurrences(String s, String part) {
+         while (s.contains(part)) { // Remove 'part' while it exists in 's'
+            s = s.replaceFirst(part, "");
+        }
+        return s;
+        // int n = s.length();
+        // int sm = part.length();
+        // StringBuilder sb = new StringBuilder();
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<sm;j++){
+        //         if(!part.charAt(i).Contain(s.charAt(i))){
+        //             sb.append(sm.charAt(i));
+        //         }
+        //     }
+        // }
+        // return sb.toString();
+    }
+}
