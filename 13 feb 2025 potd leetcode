@@ -1,0 +1,42 @@
+
+class Solution {
+    public int minOperations(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int num : nums) {
+            if (num < k) pq.add(num);
+        }
+
+        int operations = 0;
+
+        while (!pq.isEmpty()) {
+            int x = pq.poll();
+            operations++;
+
+            if (pq.isEmpty()) break;
+
+            int y = pq.poll();
+            long newValue = 2L * x + y;
+
+            if (newValue < k) pq.add((int) newValue);
+        }
+
+        return operations;
+    }
+}
+
+// class Solution {
+//     public int minOperations(int[] nums, int k) {
+//         int n = nums.length;
+//         Arrays.sort(nums);
+//         int cnt = 0;
+
+//         int i = 0; // Pointer to the smallest element
+//         while (i < n - 1 && nums[i] < k) { // until smallest reches k
+//             nums[i + 1] = nums[i] + 2 * nums[i + 1]; // Merge the smallest two elements
+//             cnt++;
+//             i++; // Move pointer forward
+//             Arrays.sort(nums); // Re-sort after each merge to maintain order
+//         }
+//         return cnt;
+//     }
+// }
